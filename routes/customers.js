@@ -1,27 +1,13 @@
 const router = require("express").Router();
 
-router.get("/", (req, res) => {
-  res.send("Get customer by id fetched from token");
-});
+const CustomerController = require("../controllers/CustomerController");
 
-router.post("/", (req, res) => {
-  res.send("Register a customer");
-});
+router.get("/", CustomerController.getCustomerById);
 
-router.put("/", (req, res) => {
-  res.send("Update a customer");
-});
+router.put("/phone", CustomerController.updateCustomerPhone);
 
-router.post("/login", (req, res) => {
-  res.send("Login a customer");
-});
+router.put("/address", CustomerController.updateCustomerAddress);
 
-router.put("/address", (req, res) => {
-  res.send("Update a customer's address");
-});
-
-router.put("/creditcard", (req, res) => {
-  res.send("Update a customer's creditcard");
-});
+router.put("/creditcard", CustomerController.updateCustomerCreditCard);
 
 module.exports = router;

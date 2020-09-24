@@ -42,9 +42,7 @@ Customer.hasMany(Order);
 Order.belongsToMany(Product, { through: OrderItem });
 
 const connect = async () => {
-  let err;
-  let result;
-  [err, result] = await nest(sequelize.sync({ force: true }));
+  let [err, result] = await nest(sequelize.sync());
   if (err) {
     console.error("Unable to connect to database.");
   } else {

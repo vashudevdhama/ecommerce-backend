@@ -25,6 +25,10 @@ const Product = sequelize.define("product", {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  category: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   available_count: {
     type: Sequelize.INTEGER,
     allowNull: false,

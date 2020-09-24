@@ -1,27 +1,17 @@
 const router = require("express").Router();
 
-router.get("/", (req, res) => {
-  res.send("Get all products");
-});
+const ProductController = require("../controllers/ProductController");
 
-router.get("/:productid", (req, res) => {
-  res.send("Get product by id");
-});
+router.get("/", ProductController.getProducts);
 
-router.get("/incategory/:categoryid", (req, res) => {
-  res.send("Get all products in given category");
-});
+router.get("/:productid", ProductController.getProductById);
 
-router.get("/:productid/details", (req, res) => {
-  res.send("Get product's detials");
-});
+router.get("/incategory/:categoryid", ProductController.getProductByCategory);
 
-router.get("/:productid/reivews", (req, res) => {
-  res.send("Get a product's reviews");
-});
+router.get("/:productid/details", ProductController.getProductDetails);
 
-router.post("/:productid/reivews", (req, res) => {
-  res.send("Submit a review for the product");
-});
+router.get("/:productid/reivews", ProductController.getProductReviews);
+
+router.post("/:productid/reivews", ProductController.postProductReviews);
 
 module.exports = router;

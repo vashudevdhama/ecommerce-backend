@@ -1,13 +1,11 @@
 const router = require("express").Router();
 
-router.get("/", (req, res) => {
-  res.send("get all categories");
-});
-router.get("/:categoryid", (req, res) => {
-  res.send("get categories by id");
-});
-router.get("/inproduct/:productid", (req, res) => {
-  res.send("get categories of the product");
-});
+const CategoryController = require("../controllers/CategoryController");
+
+router.get("/", CategoryController.getCategories);
+
+router.get("/:categoryid", CategoryController.getCategoryById);
+
+router.get("/inproduct/:productid", CategoryController.getCategoriesOfProduct);
 
 module.exports = router;

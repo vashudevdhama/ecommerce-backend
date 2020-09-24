@@ -1,15 +1,11 @@
 const router = require("express").Router();
 
-router.post("/", (req, res) => {
-  res.send("create an order");
-});
+const OrderController = require("../controllers/OrderController");
 
-router.get("/:orderid", (req, res) => {
-  res.send("Get info about order");
-});
+router.post("/", OrderController.postOrder);
 
-router.get("/incustomers", (req, res) => {
-  res.send("Get all orders by customers");
-});
+router.get("/incustomers", OrderController.getCustomerOrders);
+
+router.get("/:orderid", OrderController.getOrderById);
 
 module.exports = router;

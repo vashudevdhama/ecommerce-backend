@@ -20,6 +20,7 @@ const Customer = sequelize.define("customer", {
   },
   hashedPassword: {
     type: Sequelize.STRING,
+    unique: true,
   },
   isLoggedIn: {
     type: Sequelize.BOOLEAN,
