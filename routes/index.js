@@ -5,10 +5,12 @@ const CategoriesRouter = require("./categories");
 const ProductsRouter = require("./products");
 const OrdersRouter = require("./orders");
 const ShoppingcartRouter = require("./shoppingcart");
+const AuthRouter = require("./auth");
 
 const router = express.Router();
 
 // Sub-routes
+router.use("/auth", AuthRouter);
 router.use("/customers", CustomersRouter);
 router.use("/categories", CategoriesRouter);
 router.use("/products", ProductsRouter);
