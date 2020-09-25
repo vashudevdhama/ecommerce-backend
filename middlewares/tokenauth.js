@@ -1,10 +1,10 @@
 require("dotenv/config");
 const jwt = require("jsonwebtoken");
 
-const CustomerModel = require("./models/customers");
+const CustomerModel = require("../models/customers");
 const nest = require("../utils/nest");
 
-export const checkToken = async (req, res, next) => {
+const checkToken = async (req, res, next) => {
   try {
     let token = req.headers["authorization"];
     if (token && token.length > 7) {
@@ -28,3 +28,5 @@ export const checkToken = async (req, res, next) => {
     });
   }
 };
+
+module.exports = checkToken;
