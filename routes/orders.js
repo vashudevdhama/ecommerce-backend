@@ -1,11 +1,12 @@
 const router = require("express").Router();
 
 const OrderController = require("../controllers/OrderController");
+const checkToken = require("../middlewares/tokenauth");
 
-router.post("/", OrderController.postOrder);
+router.post("/", checkToken, OrderController.postOrder);
 
-router.get("/incustomers", OrderController.getCustomerOrders);
+router.get("/incustomers", checkToken, OrderController.getCustomerOrders);
 
-router.get("/:orderid", OrderController.getOrderById);
+router.get("/:orderid", checkToken, OrderController.getOrderById);
 
 module.exports = router;

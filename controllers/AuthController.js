@@ -1,6 +1,6 @@
 const nest = require("../utils/nest");
 const checkToken = require("../middlewares/tokenauth");
-const AuthService = require("../services/AuthService");
+const AuthService = require("../services/AuthServices");
 const { passwordHash } = require("../utils/bcrypt");
 
 const postLogin = async (req, res, next) => {

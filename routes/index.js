@@ -4,7 +4,7 @@ const CustomersRouter = require("./customers");
 const CategoriesRouter = require("./categories");
 const ProductsRouter = require("./products");
 const OrdersRouter = require("./orders");
-const ShoppingcartRouter = require("./shoppingcart");
+const ShoppingcartRouter = require("./cart");
 const AuthRouter = require("./auth");
 
 const router = express.Router();

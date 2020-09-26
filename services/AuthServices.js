@@ -30,7 +30,8 @@ class AuthService {
     }
     let token;
     try {
-      token = this.generateToken({ user_id: userDetails.id });
+      console.log("USERDETIALS::: ", userDetails.customer_id);
+      token = this.generateToken({ customer_id: userDetails.customer_id });
     } catch (err) {
       throw new Error("Error while generating token");
     }

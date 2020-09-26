@@ -18,19 +18,7 @@ const Product = sequelize.define("product", {
     allowNull: false,
   },
   description: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  imageUri: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  category: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  available_count: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.DECIMAL(5, 2),
     allowNull: false,
   },
 });

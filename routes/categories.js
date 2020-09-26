@@ -1,11 +1,16 @@
 const router = require("express").Router();
 
 const CategoryController = require("../controllers/CategoryController");
+const checkToken = require("../middlewares/tokenauth");
 
-router.get("/", CategoryController.getCategories);
+router.get("/", checkToken, CategoryController.getCategories);
 
-router.get("/:categoryid", CategoryController.getCategoryById);
+router.get("/:categoryid", checkToken, CategoryController.getCategoryById);
 
-router.get("/inproduct/:productid", CategoryController.getCategoriesOfProduct);
+router.get(
+  "/inproduct/:productid",
+  checkToken,
+  CategoryController.getCategoriesOfProduct
+);
 
 module.exports = router;

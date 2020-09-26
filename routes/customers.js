@@ -1,13 +1,18 @@
 const router = require("express").Router();
 
 const CustomerController = require("../controllers/CustomerController");
+const checkToken = require("../middlewares/tokenauth");
 
-router.get("/", CustomerController.getCustomerById);
+router.get("/", checkToken, CustomerController.getCustomerById);
 
-router.put("/phone", CustomerController.updateCustomerPhone);
+router.put("/phone", checkToken, CustomerController.updateCustomerPhone);
 
-router.put("/address", CustomerController.updateCustomerAddress);
+router.put("/address", checkToken, CustomerController.updateCustomerAddress);
 
-router.put("/creditcard", CustomerController.updateCustomerCreditCard);
+router.put(
+  "/creditcard",
+  checkToken,
+  CustomerController.updateCustomerCreditCard
+);
 
 module.exports = router;

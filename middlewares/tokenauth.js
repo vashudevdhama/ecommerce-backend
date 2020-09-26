@@ -1,6 +1,5 @@
 require("dotenv/config");
 const jwt = require("jsonwebtoken");
-
 const CustomerModel = require("../models/customers");
 const nest = require("../utils/nest");
 
@@ -9,10 +8,17 @@ const checkToken = async (req, res, next) => {
     let token = req.headers["authorization"];
     if (token && token.length > 7) {
       token = token.split("Bearer ")[1];
-      const jwtPayload = jwt.verify(token, process.env.JWT_SALT);
-      const { user_id } = jwtPayload;
-      res.setHeader("user_id", user_id);
-      let [err, userDetails] = await nest(CustomerModel.findByPk(user_id));
+      let [err, jwtPayload] = await nest(
+        jwt.verify(token, process.env.JWT_SALT)
+      );
+      if (err) {
+        console.log("Error in verifying token", { error: err });
+      }
+      const { customer_id } = jwtPayload;
+      console.log("JWTPAYLOAD ::: ", jwtPayload);
+      res.locals.customer_id = customer_id;
+      let userDetails;
+      [err, userDetails] = await nest(CustomerModel.findByPk(customer_id));
       if (err || userDetails === null) {
         throw Error("User not found");
       }
